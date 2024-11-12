@@ -1,6 +1,7 @@
 package com.demo.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ public class Homepage {
 
     public Homepage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(className = "submit")
@@ -24,11 +25,11 @@ public class Homepage {
     @FindBy(className = "header-temp-toggle")
     private WebElement menuList;
 
-    @FindBy(css="#navdrawer > div > div.header-temp-navdrawer-body > nav > div:nth-child(1) > div > ul > li:nth-child(2) > a")
-    private WebElement buyOnlineLink;
-
     @FindBy(className = "menu-search-button")
     private WebElement searchBtn;
+
+    @FindBy(xpath = "//*[@id=\"header\"]/header/nav/div[1]/ul/li[7]/button[2]/span")
+    private WebElement searchActionBtn;
 
     @FindBy(className = "menu-search-input")
     private WebElement inputText;
@@ -36,19 +37,28 @@ public class Homepage {
     public String getTitle() {
         return driver.getTitle();
     }
+
     public void clickCloseBtn() {
         closeBtn.click();
     }
+
     public void clickConfirmBtn() {
         confirmBtn.click();
     }
+
     public void clickMenuList() {
         menuList.click();
     }
-    public void clickSearchButton(){ searchBtn.click(); }
-    public void clickBuyOnlineLink() {
-        buyOnlineLink.click();
+
+    public void clickSearchButton() {
+        searchBtn.click();
     }
 
+    public void clickSearchEnter() {
+        searchActionBtn.click();
+    }
 
+    public void searchKeyword(String searchKeyword) throws InterruptedException {
+        inputText.sendKeys(searchKeyword);
+    }
 }

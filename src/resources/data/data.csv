@@ -1,4 +1,4 @@
-searchItem
-claim
-products
-news
+searchItem,URL
+claim,https://www.zurich.com.my/search?keyphrase=claim&page=1
+products,https://www.zurich.com.my/search?keyphrase=products&page=1
+news,https://www.zurich.com.my/search?keyphrase=news&page=1
